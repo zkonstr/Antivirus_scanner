@@ -13,7 +13,6 @@ namespace AntiVirusScanner
     /// </summary>
     public partial class MainWindow : Window
     {
-        public RichTextBox ogRTB = new RichTextBox();
         private readonly Logger _logger = new Logger("log.txt");
         private readonly Scanner _scanner = new Scanner();
 
@@ -24,7 +23,6 @@ namespace AntiVirusScanner
 
         private void ScanButton_Click(object sender, RoutedEventArgs e)
         {
-
             var searchString = SearchBox.Text;
             if (searchString != null)
             {

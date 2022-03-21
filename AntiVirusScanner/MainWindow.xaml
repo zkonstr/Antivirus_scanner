@@ -16,7 +16,7 @@
                     <TextBlock x:Name="SearchBox" Canvas.Left="448" TextWrapping="Wrap" Canvas.Top="315" Height="22" Text="" Margin="-1,0,-1,0"/>
                 </Border>
             </DockPanel>
-            <RichTextBox x:Name="LogRTB" Width="170">
+            <RichTextBox x:Name="LogRTB" IsReadOnly="True" Width="170">
                 <FlowDocument>
                     <Paragraph>
                         <Run Text="Click scan to create new log"/>
