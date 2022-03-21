@@ -20,12 +20,18 @@ namespace AntiVirusScanner
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            _logger.Write(_scanner.Scan(@"C:\Users\zkons\Downloads"));  
+
+            var searchString = SearchBox.Text;
+            if (searchString != null) _logger.Write(_scanner.Scan(@"" + searchString));
+            
         }
 
-        private void TitleTB_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            var dialog = new System.Windows.Forms.FolderBrowserDialog();
+            System.Windows.Forms.DialogResult result = dialog.ShowDialog();
+            SearchBox.Text = dialog.SelectedPath.ToString();
+          
         }
     }
 }

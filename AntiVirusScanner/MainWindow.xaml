@@ -8,13 +8,12 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <DockPanel LastChildFill="False">
-            <Button Content="Scan" DockPanel.Dock="Bottom" Height="50" HorizontalAlignment="Center" Width="50" Click="Button_Click"/>
-            <Label x:Name="TitleLabel" Content="Antivirus by Konstantin Zhybul" Background="#FF64D7FF" HorizontalContentAlignment="Center" FontFamily="Calibri" DockPanel.Dock="Top" Height="50" FontSize="16"/>
-            <Canvas Width="800" Height="335">
-                <Button x:Name="SearchButton" Content="..." Canvas.Left="748" Canvas.Top="211" Width="40" Height="20" FontSize="16" FontFamily="Calibri" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                <TextBlock x:Name="SearchBox" Canvas.Left="448" TextWrapping="Wrap" Canvas.Top="315" Width="300" Height="20"/>
-            </Canvas>
-
+            <Button Content="Scan" DockPanel.Dock="Bottom" Height="50" HorizontalAlignment="Center" Width="800" Click="Button_Click" FontSize="24" FontFamily="Calibri" FontWeight="Bold"/>
+            <Label x:Name="TitleLabel" Content="Antivirus by Konstantin Zhybul" Background="#FF64D7FF" HorizontalContentAlignment="Center" FontFamily="Calibri" DockPanel.Dock="Top" Height="50" FontSize="24" FontWeight="Bold"/>
+            <Button x:Name="SearchButton" Content="..." Canvas.Left="760" Canvas.Top="313" Width="40" Height="20" FontSize="16" FontFamily="Calibri" VerticalAlignment="Top" HorizontalAlignment="Left" Click="SearchButton_Click"/>
+            <Border BorderThickness="1" BorderBrush="Black" Canvas.Left="458" Canvas.Top="313" Height="30" Width="302">
+                <TextBlock x:Name="SearchBox" Canvas.Left="448" TextWrapping="Wrap" Canvas.Top="315" Width="300" Height="20" Text=""/>
+            </Border>
         </DockPanel>
 
     </Grid>
