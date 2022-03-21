@@ -15,6 +15,9 @@ namespace AntiVirusScanner.AntiVirus
         public void Write(IEnumerable<string> strings)
         {
             File.WriteAllLines(_logPath, strings);
+            
+
         }
+
     }
 }

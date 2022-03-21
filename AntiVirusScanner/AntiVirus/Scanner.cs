@@ -11,15 +11,18 @@ namespace AntiVirusScanner.AntiVirus
 
         public IEnumerable<string> Scan(string folderPath)
         {
-            foreach (string file in Directory.EnumerateFiles(folderPath))
-            {
-                string contentsPrefix = ReadPrefix(file, EXE_PREFIX.Length);
-                if (!Executable(contentsPrefix))
+                        
+                foreach (string file in Directory.EnumerateFiles(folderPath, "*", SearchOption.AllDirectories))
                 {
-                    continue;
+
+                    string contentsPrefix = ReadPrefix(file, EXE_PREFIX.Length);
+                    if (!Executable(contentsPrefix))
+                    {
+                        continue;
+                    }
+                    yield return Path.GetFileName(file);
                 }
-                yield return Path.GetFileName(file);
-            }
+            
         }
 
         private bool Executable(string contentsPrefix)
