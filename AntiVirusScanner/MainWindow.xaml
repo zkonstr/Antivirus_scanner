@@ -5,25 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AntiVirusScanner"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" MinWidth="600" MinHeight="403">
     <Grid>
-        <DockPanel LastChildFill="False">
-            <Button x:Name="ScanButton" Content="Scan" DockPanel.Dock="Bottom" Height="50" HorizontalAlignment="Center" Width="800" Click="ScanButton_Click" FontSize="24" FontFamily="Calibri" FontWeight="Bold"/>
-            <Label x:Name="TitleLabel" Content="Antivirus by Konstantin Zhybul" Background="#FF64D7FF" HorizontalContentAlignment="Center" FontFamily="Calibri" DockPanel.Dock="Top" Height="50" FontSize="24" FontWeight="Bold"/>
-            <DockPanel DockPanel.Dock="Bottom" Height="24">
-                <Button x:Name="SearchButton" Content="..." FontSize="16" FontFamily="Calibri" Click="SearchButton_Click" Width="40"/>
-                <Border BorderThickness="1" BorderBrush="Black" DockPanel.Dock="Bottom" Height="24">
-                    <TextBlock x:Name="SearchBox" Canvas.Left="448" TextWrapping="Wrap" Canvas.Top="315" Height="22" Text="" Margin="-1,0,-1,0"/>
-                </Border>
-            </DockPanel>
-            <RichTextBox x:Name="LogRTB" IsReadOnly="True" Width="170">
-                <FlowDocument>
-                    <Paragraph>
-                        <Run Text="Click scan to create new log"/>
-                    </Paragraph>
-                </FlowDocument>
-            </RichTextBox>
-        </DockPanel>
-
+        <TextBox x:Name="SearchBox" Canvas.Left="448" TextWrapping="Wrap" Canvas.Top="315" Text="" VerticalAlignment="Bottom" IsReadOnly="True" VerticalContentAlignment="Bottom" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" MinWidth="600" MinHeight="22"/>
+        <Grid Margin="0,0,0,22" VerticalAlignment="Bottom" MinWidth="600" MinHeight="20">
+            <Button x:Name="ScanButton" Content="Scan" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="100,0,0,0" Click="ScanButton_Click" VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch" MinWidth="200" MinHeight="20"/>
+            <Button x:Name="FolderButton" Content="Select folder" VerticalAlignment="Center" HorizontalAlignment="Left" Click="FolderButton_Click" VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch" MinWidth="100" MinHeight="20"/>
+            <RadioButton x:Name="MZButton" Content="MZ" HorizontalAlignment="Left" Margin="300,0,0,0" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch" MinWidth="100" MinHeight="20" Checked="RadioButton_Checked"/>
+            <RadioButton x:Name="PEButton" Content="PE" HorizontalAlignment="Left" Margin="400,0,0,0" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch" MinWidth="100" MinHeight="20"/>
+            <RadioButton x:Name="HexButton" Content="Hex" HorizontalAlignment="Left" Margin="500,0,0,0" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch" MinWidth="100" MinHeight="20"/>
+        </Grid>
+        <ListBox x:Name="LogLB" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,0,0,42" HorizontalAlignment="Left" Width="300"/>
     </Grid>
 </Window>

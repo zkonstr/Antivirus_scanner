@@ -3,6 +3,7 @@ using System.IO;
 
 namespace AntiVirusScanner.AntiVirus
 {
+    
     public class Logger
     {
         private static string _logPath;
@@ -12,11 +13,17 @@ namespace AntiVirusScanner.AntiVirus
             _logPath = loggerPath;
         }
 
-        public void Write(IEnumerable<string> strings)
+        public void WriteAll(IEnumerable<string> strings)
         {
             File.WriteAllLines(_logPath, strings);
-            
-
+        }
+        public void ClearLog()
+        {
+            File.WriteAllText(_logPath,"");
+        }
+        public void WriteSingle(string contents)
+        {
+            File.AppendAllText(_logPath, contents+"\n");
         }
 
     }
