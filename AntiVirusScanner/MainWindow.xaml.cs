@@ -50,12 +50,13 @@ namespace AntiVirusScanner
             return principal.IsInRole(WindowsBuiltInRole.Administrator);
         }
 
-
         private readonly Scanner _scanner = new Scanner();
-
+        public DBManager _DBManager = new DBManager();
         public MainWindow()
         {
             InitializeComponent();
+            _DBManager.ConnectDB();
+
         }
 
         private void FolderButton_Click(object sender, RoutedEventArgs e)
@@ -67,6 +68,7 @@ namespace AntiVirusScanner
         bool isRunning = false;
         private void ScanButton_Click(object sender, RoutedEventArgs e)
         {
+
             if (!isRunning)
             {
                 isRunning = true;
@@ -74,29 +76,32 @@ namespace AntiVirusScanner
                 if (!string.IsNullOrEmpty(searchString))
                 {
                     LogLB.Items.Clear();
-                    if (MZButton.IsChecked == true)
-                    {
-                        _scanner.ScanMZ(@"" + searchString);
-                        var _logText = File.ReadAllText("log.txt").Split('\n');
-                        
-                        foreach (string line in _logText)
-                        {
-                            LogLB.Items.Add(line);
-                        }
-                        int exes = _logText.Length - 1;
-                        MessageBox.Show("Scan is done " + exes + " .exe found");
-                    }
                     if (PEButton.IsChecked == true)
                     {
-                        _scanner.ScanPE(@"" + searchString);
+                        _scanner.ScanPE(@searchString);
                         var _logText = File.ReadAllText("log.txt").Split('\n');
                         foreach (string line in _logText)
                         {
                             LogLB.Items.Add(line);
                         }
                         int exes = _logText.Length - 1;
-                        MessageBox.Show("Scan is done " + exes + " .exe found");
+                        MessageBox.Show("Scan is done " + exes + " executable file(s) found");
                     }
+                    if (HexButton.IsChecked == true)
+                    {
+
+                        string[] vs = _DBManager.GetVs().Split('\n');
+                        _scanner.ScanHex(@searchString,vs);
+                        var _logText = File.ReadAllText("log.txt").Split('\n');
+                        foreach (string line in _logText)
+                        {
+                            LogLB.Items.Add(line);
+                        }
+                        int hasVS = _logText.Length - 1;
+                        MessageBox.Show("Scan is done " + hasVS + " file(s) has virus sequences");
+                    }
+                    GC.Collect();
+                    GC.WaitForPendingFinalizers();
                 }
                 isRunning = false;
             }
@@ -106,10 +111,10 @@ namespace AntiVirusScanner
             }
             
         }
-
-        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        private void DBButton_Click(object sender, RoutedEventArgs e)
         {
-
+            string s = _DBManager.GetVs();
+            MessageBox.Show(s);
         }
     }
 }

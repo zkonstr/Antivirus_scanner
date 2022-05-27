@@ -11,10 +11,11 @@
         <Grid Margin="0,0,0,22" VerticalAlignment="Bottom" MinWidth="600" MinHeight="20">
             <Button x:Name="ScanButton" Content="Scan" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="100,0,0,0" Click="ScanButton_Click" VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch" MinWidth="200" MinHeight="20"/>
             <Button x:Name="FolderButton" Content="Select folder" VerticalAlignment="Center" HorizontalAlignment="Left" Click="FolderButton_Click" VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch" MinWidth="100" MinHeight="20"/>
-            <RadioButton x:Name="MZButton" Content="MZ" HorizontalAlignment="Left" Margin="300,0,0,0" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch" MinWidth="100" MinHeight="20" Checked="RadioButton_Checked"/>
-            <RadioButton x:Name="PEButton" Content="PE" HorizontalAlignment="Left" Margin="400,0,0,0" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch" MinWidth="100" MinHeight="20"/>
-            <RadioButton x:Name="HexButton" Content="Hex" HorizontalAlignment="Left" Margin="500,0,0,0" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch" MinWidth="100" MinHeight="20"/>
+            <CheckBox x:Name="PEButton" Content="PE" Margin="440,0,0,0" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch" MinWidth="100" MinHeight="20" HorizontalAlignment="Left" Width="81"/>
+            <CheckBox x:Name="HexButton" Content="Hex" Margin="540,0,0,0" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch" MinWidth="100" MinHeight="20" HorizontalAlignment="Left"/>
+            <ProgressBar x:Name="PrBar" Margin="300,0,200,0" VerticalAlignment="Center" MinWidth="140" MinHeight="20" HorizontalAlignment="Left"/>
         </Grid>
-        <ListBox x:Name="LogLB" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,0,0,42" HorizontalAlignment="Left" Width="300"/>
+        <ListBox x:Name="LogLB" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,0,0,42" HorizontalAlignment="Left" MinWidth="300"/>
+        <Button x:Name="DBButton" Content="test DB" HorizontalAlignment="Left" Margin="598,2,0,0" VerticalAlignment="Top" Click="DBButton_Click"/>
     </Grid>
 </Window>
